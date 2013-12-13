@@ -31,6 +31,6 @@ class BreadcrumbsExtension extends \Twig_Extension
 
     public function getName()
     {
-        return 'art_breadcrumbs.twig_extension';
+        return 'frieser_breadcrumbs.twig_extension';
     }
 }
