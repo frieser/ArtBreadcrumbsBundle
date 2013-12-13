@@ -3,9 +3,9 @@
  * Author: Paul Seleznev
  * Date: 4/08/2013
  */
-namespace Art\BreadcrumbsBundle\Builder;
+namespace Frieser\BreadcrumbsBundle\Builder;
 
-use Art\BreadcrumbsBundle\Exception\InvalidSchemaException;
+use Frieser\BreadcrumbsBundle\Exception\InvalidSchemaException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Yaml\Yaml;

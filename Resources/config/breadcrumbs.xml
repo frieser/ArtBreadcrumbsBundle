@@ -4,33 +4,33 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-    	<parameter key="art_breadcrumbs.template_helper.class">Art\BreadcrumbsBundle\Twig\BreadcrumbsExtension</parameter>
-    	<parameter key="art_breadcrumbs.main_builder.class">Art\BreadcrumbsBundle\Builder\MainBuilder</parameter>
-        <parameter key="art_breadcrumbs.yml_builder.class">Art\BreadcrumbsBundle\Builder\YMLBuilder</parameter>
-        <parameter key="art_breadcrumbs.dev_mode" />
-    	<parameter key="art_breadcrumbs.schema" />
+    	<parameter key="frieser_breadcrumbs.template_helper.class">frieser\BreadcrumbsBundle\Twig\BreadcrumbsExtension</parameter>
+    	<parameter key="frieser_breadcrumbs.main_builder.class">frieser\BreadcrumbsBundle\Builder\MainBuilder</parameter>
+        <parameter key="frieser_breadcrumbs.yml_builder.class">frieser\BreadcrumbsBundle\Builder\YMLBuilder</parameter>
+        <parameter key="frieser_breadcrumbs.dev_mode" />
+    	<parameter key="frieser_breadcrumbs.schema" />
     </parameters>
     <services>
         <!--Services for building breadcrumbs array-->
-        <service id="art_breadcrumbs.yml_builder" class="%art_breadcrumbs.yml_builder.class%">
+        <service id="frieser_breadcrumbs.yml_builder" class="%frieser_breadcrumbs.yml_builder.class%">
             <argument type="service" id="router" />
-            <argument>%art_breadcrumbs.schema%</argument>
+            <argument>%frieser_breadcrumbs.schema%</argument>
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
         </service>
 
-    	<service id="art_breadcrumbs.template_helper" class="%art_breadcrumbs.template_helper.class%">
-    		<argument type="service" id="art_breadcrumbs.main_builder" />
-            <tag name="twig.extension" alias="art_breadcrumbs.twig_extension" />
+    	<service id="frieser_breadcrumbs.template_helper" class="%frieser_breadcrumbs.template_helper.class%">
+    		<argument type="service" id="frieser_breadcrumbs.main_builder" />
+            <tag name="twig.extension" alias="frieser_breadcrumbs.twig_extension" />
     	</service>
-    	<service id="art_breadcrumbs.main_builder" class="%art_breadcrumbs.main_builder.class%">
+    	<service id="frieser_breadcrumbs.main_builder" class="%frieser_breadcrumbs.main_builder.class%">
     		<argument type="service" id="twig" />
-            <argument type="service" id="art_breadcrumbs.builder" />
-            <argument>%art_breadcrumbs.template%</argument>
-            <argument>%art_breadcrumbs.separator%</argument>
+            <argument type="service" id="frieser_breadcrumbs.builder" />
+            <argument>%frieser_breadcrumbs.template%</argument>
+            <argument>%frieser_breadcrumbs.separator%</argument>
             <call method="setDevMode">
-                <argument>%art_breadcrumbs.dev_mode%</argument>
+                <argument>%frieser_breadcrumbs.dev_mode%</argument>
             </call>
     	</service>
     </services>

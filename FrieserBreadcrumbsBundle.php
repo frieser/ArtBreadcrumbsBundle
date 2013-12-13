@@ -3,11 +3,11 @@
  * Author: Paul Seleznev
  * Date: 1/07/2013
  */
-namespace Art\BreadcrumbsBundle;
+namespace Frieser\BreadcrumbsBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ArtBreadcrumbsBundle extends Bundle
+class FrieserBreadcrumbsBundle extends Bundle
 {
 	
 }

@@ -3,14 +3,14 @@
  * Author: Paul Seleznev
  * Date: 8/08/2013
  */
-namespace Art\BreadcrumbsBundle\Tests\Builder;
+namespace Frieser\BreadcrumbsBundle\Tests\Builder;
 
-use Art\BreadcrumbsBundle\Builder\YMLBuilder;
+use Frieser\BreadcrumbsBundle\Builder\YMLBuilder;
 
 class YMLBuilderTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @expectedException Art\BreadcrumbsBundle\Exception\InvalidSchemaException
+     * @expectedException Frieser\BreadcrumbsBundle\Exception\InvalidSchemaException
      */
     public function testWithInvalidSchema()
     {
@@ -21,7 +21,7 @@ class YMLBuilderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException        \Exception
-     * @expectedExceptionMessage This builder(Art\BreadcrumbsBundle\Builder\YMLBuilder) should be used only in request scope
+     * @expectedExceptionMessage This builder(Frieser\BreadcrumbsBundle\Builder\YMLBuilder) should be used only in request scope
      */
     public function testWithoutRequestObject()
     {

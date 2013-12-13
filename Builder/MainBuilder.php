@@ -3,7 +3,7 @@
  * Author: Paul Seleznev
  * Date: 4/08/2013
  */
-namespace Art\BreadcrumbsBundle\Builder;
+namespace Frieser\BreadcrumbsBundle\Builder;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;

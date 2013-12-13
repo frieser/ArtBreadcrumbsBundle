@@ -1,9 +1,9 @@
 {
-    "name": "art/breadcrumbs-bundle",
+    "name": "frieser/breadcrumbs-bundle",
     "type": "symfony-bundle",
     "description": "Breadcrumbs bundle for Symfony2",
     "keywords": ["Breadcrumbs"],
-    "homepage": "https://github.com/Artezio/ArtBreadcrumbsBundle",
+    "homepage": "https://github.com/frieser/FrieserBreadcrumbsBundle",
     "license": "MIT",
     "authors": [
         {
@@ -15,15 +15,15 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.2",
-        "symfony/framework-bundle": "2.3.*"
+        "symfony/framework-bundle": ">=2.3.*"
     },
     "require-dev": {
-        "symfony/framework-bundle": "2.3.*"
+        "symfony/framework-bundle": ">=2.3.*"
     },
     "autoload": {
-        "psr-0": { "Art\\BreadcrumbsBundle": "" }
+        "psr-0": { "Frieser\\BreadcrumbsBundle": "" }
     },
-    "target-dir": "Art/BreadcrumbsBundle",
+    "target-dir": "Frieser/BreadcrumbsBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "0.1.x-dev"

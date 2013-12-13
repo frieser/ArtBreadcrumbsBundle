@@ -4,9 +4,9 @@
  * Date: 1/07/2013
  */
 
-namespace Art\BreadcrumbsBundle\Twig;
+namespace Frieser\BreadcrumbsBundle\Twig;
 
-use Art\BreadcrumbsBundle\Builder\MainBuilder;
+use Frieser\BreadcrumbsBundle\Builder\MainBuilder;
 
 class BreadcrumbsExtension extends \Twig_Extension
 {
