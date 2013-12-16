@@ -32,15 +32,17 @@ class YMLBuilder implements BuilderInterface
      */
     private $schema;
 
-    public function __construct(RouterInterface $router, $schema)
+    public function __construct(RouterInterface $router, $schema_enterprise_admin, $schema_distributor, $schema_super_admin)
     {
         $this->router = $router;
-        $this->schema = $schema;
+        $this->schema_distributor = $schema_distributor;
+        $this->schema_enterprise_admin = $schema_enterprise_admin;
+        $this->schema_super_admin = $schema_super_admin;
     }
 
     public function build()
     {
-        $path = realpath($this->schema);
+        $path = realpath($this->schema_distributor);
         if (!is_string($path) || 'yml' !== pathinfo($path, PATHINFO_EXTENSION)) {
             throw new InvalidSchemaException("The schema file provided isn't correct");
         }
@@ -49,9 +51,46 @@ class YMLBuilder implements BuilderInterface
         if (!$this->request) {
             throw new \Exception(sprintf('This builder(%s) should be used only in request scope', get_class($this)));
         }
+
+        //echo serialize($structure);
         
         $this->routeCollection = $this->router->getRouteCollection();
-        $breadcrumbs = $this->createBreadcrumbs($this->request, $structure);
+
+        $breadcrumbs['distributor'] = $this->createBreadcrumbs($this->request, $structure);
+
+        $path = realpath($this->schema_enterprise_admin);
+        if (!is_string($path) || 'yml' !== pathinfo($path, PATHINFO_EXTENSION)) {
+            throw new InvalidSchemaException("The schema file provided isn't correct");
+        }
+        $structure = Yaml::parse($path);
+
+        if (!$this->request) {
+            throw new \Exception(sprintf('This builder(%s) should be used only in request scope', get_class($this)));
+        }
+
+        //echo serialize($structure);
+        
+        $this->routeCollection = $this->router->getRouteCollection();
+
+        $breadcrumbs['enterprise_admin'] = $this->createBreadcrumbs($this->request, $structure);
+
+        $path = realpath($this->schema_super_admin);
+        if (!is_string($path) || 'yml' !== pathinfo($path, PATHINFO_EXTENSION)) {
+            throw new InvalidSchemaException("The schema file provided isn't correct");
+        }
+        $structure = Yaml::parse($path);
+
+        if (!$this->request) {
+            throw new \Exception(sprintf('This builder(%s) should be used only in request scope', get_class($this)));
+        }
+
+        //echo serialize($structure);
+        
+        $this->routeCollection = $this->router->getRouteCollection();
+
+        $breadcrumbs['super_admin'] = $this->createBreadcrumbs($this->request, $structure);
+
+
 
         return $breadcrumbs;
     }
@@ -72,6 +111,7 @@ class YMLBuilder implements BuilderInterface
         if (!isset($structure['children'])) {
             return null;
         }
+
         foreach ($structure['children'] as $child) {
             $result = $this->createBreadcrumbs($request, $child);
             if ($result) {
@@ -102,6 +142,8 @@ class YMLBuilder implements BuilderInterface
 
         return $breadcrumbs;
     }
+
+
 
     public function setRequest(Request $request = null)
     {

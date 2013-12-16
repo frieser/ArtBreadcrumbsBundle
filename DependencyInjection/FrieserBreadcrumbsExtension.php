@@ -28,7 +28,9 @@ class FrieserBreadcrumbsExtension extends Extension
         $container->setParameter('frieser_breadcrumbs.template', $config['template']);
         $container->setAlias('frieser_breadcrumbs.builder', $config['builder_service']);
         $container->setParameter('frieser_breadcrumbs.separator', $config['separator']);
-        $container->setParameter('frieser_breadcrumbs.schema', $config['schema']);
+        $container->setParameter('frieser_breadcrumbs.schema_distributor', $config['schema_distributor']);
+        $container->setParameter('frieser_breadcrumbs.schema_enterprise_admin', $config['schema_enterprise_admin']);
+        $container->setParameter('frieser_breadcrumbs.schema_super_admin', $config['schema_super_admin']);
         $container->setParameter('frieser_breadcrumbs.dev_mode', $config['dev_mode']);
     }
 

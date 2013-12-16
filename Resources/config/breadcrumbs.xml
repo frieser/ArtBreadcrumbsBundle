@@ -8,13 +8,17 @@
     	<parameter key="frieser_breadcrumbs.main_builder.class">Frieser\BreadcrumbsBundle\Builder\MainBuilder</parameter>
         <parameter key="frieser_breadcrumbs.yml_builder.class">Frieser\BreadcrumbsBundle\Builder\YMLBuilder</parameter>
         <parameter key="frieser_breadcrumbs.dev_mode" />
-    	<parameter key="frieser_breadcrumbs.schema" />
+        <parameter key="frieser_breadcrumbs.schema_enterprise_admin" />
+    	<parameter key="frieser_breadcrumbs.schema_distributor" />        
+        <parameter key="frieser_breadcrumbs.schema_super_admin" />
     </parameters>
     <services>
         <!--Services for building breadcrumbs array-->
         <service id="frieser_breadcrumbs.yml_builder" class="%frieser_breadcrumbs.yml_builder.class%">
             <argument type="service" id="router" />
-            <argument>%frieser_breadcrumbs.schema%</argument>
+            <argument>%frieser_breadcrumbs.schema_enterprise_admin%</argument>
+            <argument>%frieser_breadcrumbs.schema_distributor%</argument>
+            <argument>%frieser_breadcrumbs.schema_super_admin%</argument>            
             <call method="setRequest">
                 <argument type="service" id="request" on-invalid="null" strict="false" />
             </call>
